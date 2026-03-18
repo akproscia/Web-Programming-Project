@@ -1,13 +1,19 @@
 class SocialMediaPost {
-    constructor(postTitle, postText) {
+    constructor(parentElement, postTitle, postText, userName, profilePicURL) {
+        this.parentElement = parentElement;
         this.postTitle = postTitle;
         this.postText = postText;
-
+        this.userName = userName;
+        this.profilePicURL = profilePicURL;
     }
 
-    createPost() {
+   
+}
+
+class App {
+    constructor(){
+
         this.div = document.createElement("div");
 
-        
     }
 }

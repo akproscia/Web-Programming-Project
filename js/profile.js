@@ -15,7 +15,9 @@ class user {
         this.userName = userName;
     }
 
-    setBio
+    setBio(bio) {
+        this.bio = bio;
+    }
 
     getDisplayName() {
         return this.displayName;
@@ -24,7 +26,5 @@ class user {
     getUserName() {
         return this.userName;
     }
-
-
 
 }
