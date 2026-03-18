@@ -12,8 +12,8 @@ class SocialMediaPost {
 
 class App {
     constructor(){
-
         this.div = document.createElement("div");
 
     }
 }
+
