@@ -5,6 +5,7 @@ class user {
         this.userName = userName;
         this.email = email;
         this.password = password;
+        
     }
 
     setDisplayName(displayName) {

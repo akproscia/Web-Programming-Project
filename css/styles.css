@@ -1,0 +1,73 @@
+/*
+*** What we'll need to do ***
+    - design navbar
+    - design layout of posts (how each post appears AND how they look together)
+    - design profile appearance
+
+    - posts will be labeled depending on the type of media it is. We will want to have this label be a different color depending on the type
+
+    Running list of classes we will have to create:
+        - post-title
+        -
+
+    But all of this has to come after we create the objects/classes.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.4 rem;
+}
+
+/* Colors */
+
+:root {
+    /* We need to find a color scheme that fits the theme/aesthetic we're going for. 
+     * we'll do that later though. For now use basics.
+        --main-color: #;
+        --accent-color: #;
+        --secondary-color: #;
+    */
+
+    --black: #020202; /* not a true black */
+    --white: #ffffff;
+    --light-gray: #d3d3d3;
+    --blue-gray: #537d90;
+    --lighter-blue: #8eb1c2;
+
+}
+
+/* Page Wrapper */
+.wrapper {
+    max-inline-size: 1200px;
+    margin: auto;
+}
+
+
+/* Header and Navbar */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-block-end: 2px solid black;
+}
+
+.navbar-icon {
+    inline-size: 3em;
+}
+
+.nav-list {
+    list-style-type: none;
+}
+
+.nav-list a {
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: var(--lighter-blue);
+}
+
