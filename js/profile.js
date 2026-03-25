@@ -11,11 +11,9 @@ class user {
     setDisplayName(displayName) {
         this.displayName = displayName;
     }
-
     setUserName(userName) {
         this.userName = userName;
     }
-
     setBio(bio) {
         this.bio = bio;
     }
@@ -23,9 +21,13 @@ class user {
     getDisplayName() {
         return this.displayName;
     }
-
     getUserName() {
         return this.userName;
     }
+    getBio() {
+        return this.bio;
+    }
+
+    
 
 }
