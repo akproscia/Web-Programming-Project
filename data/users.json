@@ -1,0 +1,16 @@
+[
+    {
+        "displayName": "Anna",
+        "userName": "annap",
+        "email": "anna@email.com",
+        "password": "1234",
+        "interests": ["stardew valley", "naruto"]
+    },
+    {
+        "displayName": "Michely",
+        "userName": "michelyc",
+        "email": "michely@email.com",
+        "password": "1234",
+        "interests": ["", ""]
+    }
+]
