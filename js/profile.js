@@ -28,6 +28,5 @@ class user {
         return this.bio;
     }
 
-    
 
 }
