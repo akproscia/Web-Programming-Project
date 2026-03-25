@@ -31,8 +31,6 @@ class SocialMediaPost {
         this.parentElement.appendChild(this.div);
 
     }
-
-   
 }
 
 class App {
