@@ -8,7 +8,9 @@
 
     Running list of classes we will have to create:
         - post-title
-        -
+        For profile.html
+        - navbar-icon
+        - profile-header
 
     But all of this has to come after we create the objects/classes.
 */
@@ -51,7 +53,7 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    border-block-end: 2px solid black;
+    border: 2px solid black;
 }
 
 .navbar-icon {
@@ -71,3 +73,42 @@ a:hover {
     color: var(--lighter-blue);
 }
 
+/* Profile Page */
+
+.profile-page {
+    width: 95%;
+    background-color: var(--lighter-blue);
+}
+
+.profile-header {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px 10px;
+    background-color: white;
+}
+.profile-header img {
+    width: 100px;
+    padding: 5px 5px;
+}
+.profile-header h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    
+}
+.profile-header h3 {
+    margin: 0px;
+}
+
+.profile-box {
+    margin-inline: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 0px;
+
+}
+.box-body {
+    border: 1px solid var(--blue-gray);
+    margin-inline: 0px;
+    margin-bottom: 0px;
+}
