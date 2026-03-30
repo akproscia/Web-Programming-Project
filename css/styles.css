@@ -108,6 +108,20 @@ a:hover {
     padding: 5px 5px;
     margin-inline: 0px;
     margin-bottom: 0px;
-
-    
 }
+
+.connect-list {
+    columns: 2;
+    p {
+        margin: 4px 0;
+        font-size: 0.95rem;
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 20px; height: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
