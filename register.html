@@ -7,12 +7,13 @@
         <meta name="viewport" width="device-width, inital-scale=1.0" />
         <meta name="description" content="Register page for Anna and Michely's Web Programming Project"/>
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/styles.css" />
 
         <!-- import functions from JS files here -->
         <script type="module">
-            // import App from "./js/posts.js";
-              //const app = new App();
+            import setup from "./js/register.js";
+            setup();
+
         </script>
     </head>
     <body>
@@ -21,37 +22,42 @@
             <header>
                 <h1>Coffeeshop Registration</h1>
                 <!-- <h3>username</h3>  //// This should not display because the user is not logged in -->
-                
-                <nav>
-                    <!-- Put nav bar here -->
+            </header>
+               <div class="form-error hidden" id="error-message">
+                <p>Passwords do not match</p>
+                </div>
+                <!--nav>
+                    <-- Put nav bar here -->
 
-                    <form>
+                    <!--form-->
 
-                        </div>
+                        
                     <div class="form-element">
                         <label class="form-label" for="displayName">Display Name</label>
-                        <input class="form-text" type="text" name="email" id="email" />
-                    </div> 
+                        <input class="form-text" type="text" id="displayName" />
+                     </div> 
 
-                     </div>
+                
                     <div class="form-element">
                         <label class="form-label" for="username">Enter Username</label>
-                        <input class="form-text" type="text" name="username" id="username" />
+                        <input class="form-text" type="text" id="username" />
                     </div>
                     
-                    </div> 
+                    
                     <div class="form-element">
                         <label class="form-label" for="password">Enter Password</label>
-                        <input class="form-text" type="text" name="password" id="password" />
+                        <input class="form-text" type="text" id="password" />
                     </div>
                      
-                    </div>
+                    
                     <div class="form-element">
                         <label class="form-label" for="passwordConfirmed">Enter Password Again</label>
-                        <input class="form-text" type="text" name="passwordConfirmed" id="passwordConfirmed" />
+                        <input class="form-text" type="password" id="passwordConfirmed" />
                     </div>
 
-        
+                    <div class="form-element">
+                        <button class="register-button" type="button" id="register">Register</button>
+                    </div>
 
                     </form>
 

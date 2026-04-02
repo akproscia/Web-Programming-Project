@@ -1,7 +1,10 @@
 const correctUsername = "Demo";
 const correctPassword = "1234";
+const correctName = "Demo";
+const correctPassword2 = "1234";
 
-const login = (username, password, errorDiv) => {
+
+const register = (username, password, errorDiv) => {
    
     if (username === correctUsername && password === correctPassword) 
       {
@@ -14,14 +17,14 @@ const login = (username, password, errorDiv) => {
 }
 
 const setup = () => {
-    const loginButton = document.getElementById("login");
+    const registerButton = document.getElementById("register");
 
-  loginButton.addEventListener("click", () => {
+  registerButton.addEventListener("click", () => {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
         const errorDiv = document.getElementById("error-message");
         
-        login(username, password, errorDiv);
+        register(username, password, errorDiv);
     });
 };
 

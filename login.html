@@ -7,37 +7,44 @@
         <meta name="viewport" width="device-width, inital-scale=1.0" />
         <meta name="description" content="Login page for Anna and Michely's Web Programming Project"/>
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/styles.css" />
 
         <!-- import functions from JS files here -->
         <script type="module">
-            // import App from "./js/posts.js";
+            import setup from "./js/login.js";
+            setup();
 
-            // const app = new App();
         </script>
     </head>
     <body>
         <div class="wrapper">
-
+         
             <header>
                 <h1>Coffeeshop</h1>
                 <!-- <h3>username</h3>  //// This should not display because the user is not logged in -->
                 <nav>
                     <!-- Put nav bar here -->
                      <form>
+                        <div class="form-error hidden" id="error-message">
+                        <p>Invalid Username or Password</p>
                         </div>
+
                     <div class="form-element">
                         <label class="form-label" for="username">Username</label>
                         <input class="form-text" type="text" name="username" id="username" />
                     </div>
-
-                    </div>
                     <div class="form-element">
-                        <label class="form-label" for="email">Password</label>
-                        <input class="form-text" type="text" name="password" id="password" />
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-text" type="password" name="password" id="password" />
                     </div>
+                     <div class="form-element">
+                        <button class="login-button" type="button" id="login">Login</button>
+                     </div>
 
-                     </form>
+                     <div class="form-element">
+                     <p>Don't Have An Account?<a href="register.html" id="register-link">Register Here!</a></p>
+                     </div>
+                    </form>
                 </nav>
             </header>
             
