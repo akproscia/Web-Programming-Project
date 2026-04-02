@@ -4,9 +4,9 @@ const correctName = "Demo";
 const correctPassword2 = "1234";
 
 
-const register = (username, password, errorDiv) => {
+const register = (password, passwordConfirmed, errorDiv) => {
    
-    if (username === correctUsername && password === correctPassword) 
+    if (passwordConfirmed === correctPassword2 && password === correctPassword ) 
       {
         window.location.href = "profile.html";
       }
@@ -20,11 +20,11 @@ const setup = () => {
     const registerButton = document.getElementById("register");
 
   registerButton.addEventListener("click", () => {
-        const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
+        const passwordConfirmed = document.getElementById("passwordConfirmed").value;
         const errorDiv = document.getElementById("error-message");
         
-        register(username, password, errorDiv);
+        register(password, passwordConfirmed, errorDiv);
     });
 };
 
