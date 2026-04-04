@@ -18,20 +18,26 @@
     </head>
     <body>
         <div class="wrapper">
-
             <header>
-                <h1>Coffeeshop Registration</h1>
-                <!-- <h3>username</h3>  //// This should not display because the user is not logged in -->
-            </header>
-               <div class="form-error hidden" id="error-message">
-                <p>Passwords do not match</p>
+                <div style="display:flex;">
+                    <a href=""><img class="navbar-icon" src="images/website-logo.png" /></a>
+                    <h1>Coffeeshop</h1>
                 </div>
-                <!--nav>
-                    <-- Put nav bar here -->
+            </header> 
+            <main>
+                <div>
+                    <h2>Register</h2>
+                </div>
+
+                <!-- Register page needs form to submit display name, username, email, choice of pfp, and password. other functionality from this page? check proposal -->
+               <form>
+
+                    <div class="form-error hidden" id="error-message">
+                        <p>Passwords do not match</p>
+                    </div>
 
                     <!--form-->
-
-                        
+                    <strong>    
                     <div class="form-element">
                         <label class="form-label" for="displayName">Display Name</label>
                         <input class="form-text" type="text" id="displayName" />
@@ -54,6 +60,7 @@
                         <label class="form-label" for="passwordConfirmed">Enter Password Again</label>
                         <input class="form-text" type="password" id="passwordConfirmed" />
                     </div>
+                    </strong>
 
                      <p>Your Profile Picture</p>
                      <img src="images\blank-pfp.png" alt="Profile Picture" width="80" height="80/">
@@ -61,18 +68,11 @@
                      <div class="form-element">
                         <button class="register-button" type="button" id="register">Register</button>
                     </div>
-
-                    </form>
-
-
-                    </nav>
-            </header>
-            
-            <main>
-                <!-- Register page needs form to submit display name, username, email, choice of pfp, and password. other functionality from this page? check proposal -->
-               <form>
-
-               </form>
+                    
+                    <div class="form-element">
+                     <p>Already Have An Account? <a href="login.html" id="login-link">Log In Here!</a></p>
+                     </div>
+                </form>
                 
             </main>
             <footer>

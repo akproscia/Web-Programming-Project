@@ -34,7 +34,57 @@
             </header>
             
             <main>
-                
+                <div>
+                    <h2>Settings</h2>
+                </div>
+
+                <div>
+                    <h3>Make Changes to Your Account</h3>
+                    <form>
+
+                        <div class="form-error hidden" id="error-message">
+                            <p>Passwords do not match</p>
+                        </div>
+
+                        <!--form-->
+                        <strong>    
+                        <div class="form-element">
+                            <label class="form-label" for="displayName">Display Name</label>
+                            <input class="form-text" type="text" id="displayName" />
+                        </div> 
+                        <br>     
+                        <div class="form-element">
+                            <label class="form-label" for="username">Enter Username</label>
+                            <input class="form-text" type="text" id="username" />
+                        </div>
+                        <br>
+                        
+                        <div class="form-element">
+                            <label class="form-label" for="password">Enter Password</label>
+                            <input class="form-text" type="password" id="password" />
+                        </div>
+                        <br>
+                        <div class="form-element">
+                            <label class="form-label" for="passwordConfirmed">Enter Password Again</label>
+                            <input class="form-text" type="password" id="passwordConfirmed" />
+                        </div>
+                        </strong>
+                        <br>
+                        <p>Your Profile Picture</p>
+                        <img src="images\blank-pfp.png" alt="Profile Picture" width="80" height="80/">
+                    
+                        <div class="form-element">
+                            <button class="settings-button" type="button" id="change">Save Changes</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                <br>
+                <div>
+                    <h3>Delete Account</h3>
+                    <!-- Functionality has yet to be implemented -->
+                    <button class="delete-account-button" type="button" id="delete-account">Delete My Account :'(</button>
+                </div>
             </main>
             <footer>
 

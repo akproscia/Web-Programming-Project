@@ -82,25 +82,33 @@ nav a { text-decoration: none; }
     padding-right: 10px;
 }
 
-
-a:hover {
+a {
+    text-decoration: none;
     color: var(--teal);
+    font-weight: bold;
+}
+a:hover {
+    color: var(--tan);
+
 }
 
 /* Main */
 main {
+    width: 95%;
+    margin: 0 auto;
     border-left: 3px solid var(--teal);
     border-right: 3px solid var(--teal);
+    padding: 5px 10px;
 }
 
 
 /* Profile Page */
 
-.profile-page {
+/* .profile-page {
     width: 95%;
     margin: 0 auto;
     background-color: white;
-}
+} */
 .profile-header {
     display: flex;
     border: 1px solid black;
@@ -166,4 +174,10 @@ main {
 /* Text */
 h1 {
     color: var(--brown);
+}
+h2 {
+    color: var(--teal);
+}
+h3 {
+    color: var(--navy);
 }
