@@ -50,6 +50,7 @@ body {
 
 /* Page Wrapper */
 .wrapper {
+    max-width: 1200px;
     max-inline-size: 1200px;
     margin: auto;
 }
@@ -86,10 +87,18 @@ a:hover {
     color: var(--teal);
 }
 
+/* Main */
+main {
+    border-left: 3px solid var(--teal);
+    border-right: 3px solid var(--teal);
+}
+
+
 /* Profile Page */
 
 .profile-page {
     width: 95%;
+    margin: 0 auto;
     background-color: white;
 }
 .profile-header {
@@ -116,7 +125,7 @@ a:hover {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 5px 10px;
-    border: 1px solid var(--navy);
+    border: 3px double var(--navy);
     color: var(--teal);
 }
 /* make no space between text and box */
