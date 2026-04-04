@@ -170,6 +170,11 @@ main {
     display : none;
 }
 
+.post {
+    border: 2px solid var(--teal);
+    padding: 0px 10px;
+}
+
 
 /* Text */
 h1 {
