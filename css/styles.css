@@ -83,14 +83,14 @@ nav a { text-decoration: none; }
 
 
 a:hover {
-    color: var(--lighter-blue);
+    color: var(--teal);
 }
 
 /* Profile Page */
 
 .profile-page {
     width: 95%;
-    background-color: var(--lighter-blue);
+    background-color: white;
 }
 .profile-header {
     display: flex;
@@ -115,7 +115,9 @@ a:hover {
     margin-inline: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid var(--navy);
+    color: var(--teal);
 }
 /* make no space between text and box */
 .box-body {
@@ -154,5 +156,5 @@ a:hover {
 
 /* Text */
 h1 {
-    color: var(--teal);
+    color: var(--brown);
 }
