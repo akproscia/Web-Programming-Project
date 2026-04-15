@@ -1,11 +1,12 @@
 class SocialMediaPost {
-    constructor(parentElement, postTitle, postText, userName, profilePicURL) {
+    constructor(parentElement, postTitle, postText, mediaType, user) {
         // save the parentElement, postTitle, postText, and userName to the object
         this.parentElement = parentElement;
         this.postTitle = postTitle;
         this.postText = postText;
-        this.userName = userName; 
-        // this.profilePicURL = profilePicURL;
+        this.mediaType = mediaType;
+        this.user = user.userName;
+        this.profilePicURL = user.profilePicURL;
 
         // create the div as an instance variable, give it the class "post"
         this.div = document.createElement("div");
@@ -21,6 +22,16 @@ class SocialMediaPost {
         const title = document.createElement("h3");
         title.classList.add("post-title");
         title.textContent = postTitle;
+
+        const username = document.createElement("p i");
+        username.classList.add("post-username");
+        username.textContent = `Posted by ${this.user}`;
+
+        this.div.appendChild(title);
+        this.div.appendChild(username);
+
+        // media type
+        
 
         // create the post text paragraph and add it to the div instance variable
         const p = document.createElement('p');

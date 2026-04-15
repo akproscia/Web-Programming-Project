@@ -35,7 +35,9 @@ class User {
 
     setContact(platform, url) {
         // need to chech to make sure that the platform exists and is in our system
-        this.contacts[platform] = url;
+        if (platform in this.contacts) {
+            this.contacts[platform] = url;
+        }
     }
     //adds to the list of users they are following
     addFollowing(user){
@@ -43,7 +45,6 @@ class User {
             this.following.push(user);
         }
     }
-
 
     addInterest(interest) {
         this.interests.push(interest);
