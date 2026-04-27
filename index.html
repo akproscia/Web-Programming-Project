@@ -3,7 +3,7 @@
     <head>
         <title>Coffeeshop | Home</title>
         <meta charset="utf-8" />
-        <meta name="viewport" width="device-width, inital-scale=1.0" />
+        <meta name="viewport" width="device-width, initial-scale=1.0" />
         <meta name="description" content="Home page for Anna and Michely's Web Programming Project"/>
 
         <link rel="stylesheet" href="css/styles.css" />
@@ -13,6 +13,7 @@
             import App from "./js/posts.js";
 
             const app = new App();
+            app.loadPosts();
         </script>
     </head>
     <body>
@@ -36,38 +37,55 @@
                 <!-- display posts, other functionality from this page? check proposal -->
                 <!-- "Add something" button/box on top -->
 
+                <section id="new-post-section">
+
+                    <div>
+                        <h2>Add a New Post!</h2>
+                    </div>
+
+                    <form id="add-post">
+
+                        <div class="form-element">
+                            <label class="form-label" for="post-title">Title</label>
+                            <input class="form-text" type="text" id="post-title" placeholder="Enter post title..." />
+                        </div>
+
+                        <div class="form-element">
+                            <label class="form-label" for="media-type">Media Type</label>
+                            <select class="form-select" id="media-type">
+                                <option value="show">Show</option>
+                                <option value="movie">Movie</option>
+                                <option value="book">Book</option>
+                                <option value="game">Game</option>
+                                <option value="music">Song or Artist</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-element">
+                            <label class="form-label" for="post-body">What did you think?</label>
+                            <input class="form-text" id="post-body" type="text" placeholder="More about this..." />
+                        </div>
+
+                        <div class="form-element">
+                            <label class="form-label" for="user-name">Username</label>
+                            <input class="form-text" type="text" id="user-name" placeholder="Your name..." />
+                        </div>
+
+                        <div class="form-element">
+                            <button class="form-button" type="submit" id="submit-post">Post</button>
+                        </div>
+                    </form>
+                </section>
+
+                <br>
+
                 <!-- Sort posts button -->
-                <button class="form-button" id="sort">Sort Posts</button>
+                <button class="form-button" id="refresh-posts">Refresh Posts</button>
 
                 <!-- post container div, posts will be displayed in here. this will be referenced in the js file by #post-container -->
                 <div class="post-container" id="post-container">
-                    <div class="post">
-                        <h3>Masayoshi Takanaka</h3>
-                        <p><i>janedoe</i></p>
-                        <p>I've been really into Masayoshi Takanaka's music recently! He has a fun, upbeat but also relaxing energy.
-                            <br>MY favorite song by him is 'BRASILIAN SKIES'. Give it a listen! <a href="https://open.spotify.com/track/3bMc9oRaUWnojCrYTUXXcQ?si=2S0HwSqFThGsOnDdzmxxIg">BRASILIAN SKIES by Masayoshi Takanaka</a>
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post">
-                        <h3>Fullmetal Alchemist Brotherhood</h3>
-                        <p><i>annaaaa</i></p>
-                        <p>I started watching this show a few weeks ago! 
-                            Has anyone else seen it? :') I need to talk to someone about it !!!
-                            <br>
-                            <strong>NO SPOILERS THOUGH!!</strong>
-                        </p>
-                    </div>
-                    <br>
-                    <div class="post">
-                        <h3>Elden Ring</h3>
-                        <p><i>johnnyca$h</i></p>
-                        <p>
-                            I'm starting my first Elden Ring playthrough. What type of build should I go for? 
-                            <br>
-                            I was thinking of doing a magic or a dexterity build. Any recommendations for early-game weapons for either of those builds?
-                        </p>
-                    </div>
+                    <!-- Posts will be dynamically inserted here by JS -->
                 </div>
 
             </main>

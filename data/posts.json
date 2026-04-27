@@ -1,0 +1,10 @@
+[
+  {
+    "postTitle": "Test Post",
+    "postText": "Hello world",
+    "mediaType": "movie",
+    "user": {
+      "userName": "Anna"
+    }
+  }
+]
