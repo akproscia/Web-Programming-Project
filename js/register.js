@@ -1,31 +1,52 @@
-const correctUsername = "Demo";
-const correctPassword = "1234";
-const correctName = "Demo";
-const correctPassword2 = "1234";
+class App {
+    constructor(){
+        this.displayNameInput = document.querySelector('#displayName');
+        this.usernameInput = document.querySelector('#username');
+        this.passwordInput = document.querySelector('#password');
+        this.confirmInput = document.querySelector('#passwordConfirmed');
+        this.errorDiv = document.querySelector('#error-message');
 
+        this.register = this.register.bind(this);
 
-const register = (password, passwordConfirmed, errorDiv) => {
-   
-    if (passwordConfirmed === correctPassword2 && password === correctPassword ) 
-      {
-        window.location.href = "profile.html";
-      }
+        document.querySelector('#register').addEventListener('click', this.register);
+    }
 
-    else { 
-        errorDiv.classList.remove("hidden");
+    async register(event){
+        if(event) event.preventDefault();
+
+        if(this.passwordInput.value !== this.confirmInput.value) {
+            this.showError("Passwords do not match");
+            return;
+        }
+
+        const userData = {
+            displayName: this.displayNameInput.value,
+            username: this.usernameInput.value,
+            password: this.passwordInput.value
+        }
+
+        const response = await fetch('/register', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData)
+        });
+
+        const result = await response.json();
+
+        if (result.success){
+            alert("Registration successful!");
+            window.location.href = 'login.html';
+        } else {
+            this.showError(result.message);
+        }
+    }
+
+    showError(message){
+        this.errorDiv.textContent = message;
+        this.errorDiv.classList.remove('hidden');
     }
 }
 
-const setup = () => {
-    const registerButton = document.getElementById("register");
-
-  registerButton.addEventListener("click", () => {
-        const password = document.getElementById("password").value;
-        const passwordConfirmed = document.getElementById("passwordConfirmed").value;
-        const errorDiv = document.getElementById("error-message");
-        
-        register(password, passwordConfirmed, errorDiv);
-    });
-};
-
-export default setup;
+export default function setup() {
+    new App();
+}
