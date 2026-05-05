@@ -4,13 +4,29 @@
         "userName": "annap",
         "email": "anna@email.com",
         "password": "1234",
-        "interests": ["stardew valley", "naruto"]
+        "interests": [
+            "stardew valley",
+            "naruto"
+        ]
     },
     {
         "displayName": "Michely",
         "userName": "michelyc",
         "email": "michely@email.com",
         "password": "1234",
-        "interests": ["", ""]
+        "interests": [
+            "",
+            ""
+        ]
+    },
+    {
+        "displayName": "Demo3",
+        "userName": "demo3",
+        "email": "",
+        "password": "123",
+        "interests": [
+            "",
+            ""
+        ]
     }
 ]

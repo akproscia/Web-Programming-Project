@@ -63,11 +63,30 @@ class UserManager {
     }
 }
 
-const userManager = new UserManager('./data/users.json', initialUsers);
+/********************
+** Display Username/Name on Myprofile page **
+********************/
 
+const userManager = new UserManager('./data/users.json', initialUsers);
+let currentUser = null;
+
+// set user as null until, a user is login in
+// after Successfully login, take there username and name, so that it can be displayed 
+// on their Myprofile page. 
 app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    res.json(userManager.authenticate(username, password));
+    const result = userManager.authenticate(req.body.username, req.body.password);
+    if (result.success) {
+        currentUser = userManager.users.find(u => u.userName === req.body.username);
+    }
+    res.json(result);
+});
+
+app.get('/api/currentUser', (req, res) => {
+    if (currentUser) {
+        res.json(currentUser);
+    } else {
+        res.status(401).json({ message: "User not logged in" });
+    }
 });
 
 app.post('/register', (req, res) => {

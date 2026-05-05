@@ -56,37 +56,12 @@ class App {
     // read inputs and create an account
     constructor() {
         // set up references
-        // constructor/ loadProfile get username/Name from server so that it can be displayed
-        // on the users profile
-        this.profileDisplayName2 = document.querySelector("#profileDisplayName");
-        this.profileDisplayUsername2 = document.querySelector("#profileDisplayUsername");
-      
+        this.displayName = document.querySelector("#profileDisplayName");
+        this.displayUserName = document.querySelector("#profileUserName");
+
         this.loadProfile();
-    }
 
-    async loadProfile()
-    {
-        try {
-            // sends request to get data on the current user
-            const response = await fetch('/api/currentUser');
-
-            if (response.ok) {
-                const userData = await response.json();
-                this.renderUser(userData);
-            } else {
-                console.log("No user logged in");
-                window.location.href = 'login.html'; 
-            }
-        } catch (error) {
-            console.error("Error loading profile", error);
-        }
     }
-
-    renderUser(user) {
-        this.profileDisplayName2.textContent = user.displayName;
-        this.profileDisplayUsername2.textContent = `@${user.userName}`;
-    }
-    
 
     /*
     Needs to be developed further!
@@ -124,6 +99,6 @@ class App {
     }
 }
 
-export default function setup(){
-    new App(); 
+export default function setup() {
+    
 }
