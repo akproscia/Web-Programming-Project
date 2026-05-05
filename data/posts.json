@@ -1,18 +1,8 @@
 [
-  {
-    "postTitle": "Test Post",
-    "postText": "Hello world",
-    "mediaType": "movie",
-    "user": {
-      "userName": "Anna"
+    {
+        "postTitle":"My First Post",
+        "postText":"I just started using this website and I'm excited to share my thoughts!",
+        "mediaType":"other",
+        "user":{"userName":"Anna"}
     }
-  },
-  {
-    "postTitle": "Test Post",
-    "postText": "Hello world",
-    "mediaType": "movie",
-    "user": {
-      "userName": "Anna"
-    }
-  }
 ]

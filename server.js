@@ -116,9 +116,8 @@ app.post('/save-data', (req, res) => {
     );
 });
 
-app.get('/failed-to-login', (req, res) => {
-    res.sendFile('public/failed-to-login.html', { root: __dirname });
-});
+app.get('/failed-to-login');
+
 
 /*****************
 ** Start Server **
