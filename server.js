@@ -93,6 +93,28 @@ app.post('/register', (req, res) => {
     res.json(userManager.registerUser(req.body));
 });
 
+/********************
+** Update Username/Name from settings page **
+********************/
+
+app.post('/api/updateUser', (req, res) => {
+    if (!currentUser) {
+        return res.status(401).json({ message: "Not logged in" });
+    }
+
+    const { displayName, userName, password } = req.body;
+    currentUser.displayName = displayName || currentUser.displayName;
+    currentUser.userName = userName || currentUser.userName;
+    
+    if (password) {
+        currentUser.password = password;
+    }
+
+    // add changes to users.json
+    userManager.saveToFile();
+    res.json({ success: true, message: "Settings updated" });
+});
+
 
 /********************
 ** Post Management **
