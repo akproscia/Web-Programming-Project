@@ -6,7 +6,6 @@ class SocialMediaPost {
         this.postText = postText;
         this.mediaType = mediaType;
         this.user = user.userName;
-        this.profilePicURL = user.profilePicURL;
 
         // create the div as an instance variable, give it the class "post"
         this.div = document.createElement("div");
@@ -39,10 +38,20 @@ class SocialMediaPost {
         this.addToDOM();
     }
 
+    // compare this post with another, for sorting purposes
+    localeCompare(otherPost){
+        // returns -1 if this.text lexicographically (alphanumerically) comes before otherPost.text
+        // returns  1 if this.text lexicographically (alphanumerically) comes after otherPost.text
+        // returns  0 if this.text === otherPost.text
+        return this.text.localeCompare(otherPost.text);
+    }
+
+    // removes the div from the DOM
     remove() {
         this.div.remove();
     }
 
+    //
     addToDOM() {
         this.parentElement.appendChild(this.div);
     }
@@ -52,11 +61,6 @@ class App {
     constructor() {
         // App should handle references to the post container, text input, other passed values, etc.
         // It should also havr all methods that deal with creating and editing posts. everything will be done through this class. 
-        
-
-        //The following code is from Professor Hamza's github repo: 
-        //  /csc324-spring-2026/make-a-post-with-classes/js/posts.js
-        // It is intended to serve as a starting point, and we can adjust it as needed going forward.
 
         // set up a reference to the post container in the html
         this.postContainer = document.getElementById("post-container");
@@ -73,7 +77,7 @@ class App {
 
     async loadPosts() {
         // fetch the posts from data/posts.json and save them to an array variable in the App object
-        const response = await fetch("data/posts.json");
+        const response = await fetch("/data");
         const data = await response.json();
         
         // create a new post for each object in the data array
@@ -105,6 +109,15 @@ class App {
             mediaType: document.getElementById("media-type").value,
             user: { userName: document.getElementById("user-name").value } // add pfp later?
         }
+
+
+        fetch('/save-data', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(obj)
+        });
 
         this.createPost(obj);
 
