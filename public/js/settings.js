@@ -9,8 +9,26 @@ class SettingsApp {
 
         this.loadCurrentData();
         this.savefromButton.addEventListener("click", () => this.handleSave());
+       
+        this.deleteButton = document.querySelector("#delete-account"); // Grabs your button
+       this.deleteButton.addEventListener("click", () => this.handleDelete());
+   
     }
+     
+    async handleDelete() {
+    const confirmDelete = confirm("Are you sure, you want to delete your account.");
+    
+    if (confirmDelete) {
+        const response = await fetch('/api/deleteAccount', {
+            method: 'DELETE' 
+        });
 
+        if (response.ok) {
+            alert("Account has been deleted.");
+            window.location.href = 'login.html'; 
+        }
+    }
+}
     // auto fills in username/name into text boxes
     // if nothing loads into the text boxes go back to login
     async loadCurrentData() {

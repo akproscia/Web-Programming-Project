@@ -117,6 +117,29 @@ app.post('/api/updateUser', (req, res) => {
 
 
 /********************
+** Delete Account From Settings **
+********************/
+//check if user exists, then find their account in user.json and remove it
+app.delete('/api/deleteAccount', (req, res) => {
+    if (!currentUser) {
+        return res.status(401).json({ message: "Not logged in" });
+    }
+
+    const index = userManager.users.findIndex(u => u.userName === currentUser.userName);
+
+    if (index !== -1) {
+        userManager.users.splice(index, 1);
+         userManager.saveToFile();
+         currentUser = null;
+
+        res.json({ success: true });
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
+});
+
+
+/********************
 ** Post Management **
 ********************/
 

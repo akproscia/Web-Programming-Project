@@ -18,15 +18,5 @@
             "",
             ""
         ]
-    },
-    {
-        "displayName": "Demo3",
-        "userName": "demo3",
-        "email": "",
-        "password": "123",
-        "interests": [
-            "",
-            ""
-        ]
     }
 ]
