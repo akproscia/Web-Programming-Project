@@ -178,12 +178,44 @@ main {
     display : none;
 }
 
-.post {
-    border: 2px solid var(--accent-color);
-    padding: 0px 10px;
+
+/**********
+** Posts **
+**********/
+
+.post-container {
     margin-top: 10px;
+    border: var(--light-gray) 1.5px solid;
+    background-color: var(--lighter-gray);
 }
 
+.post {
+    /* border-top: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color); */
+    
+    padding: 2px 10px;
+    margin-bottom: 5px;
+    background-color: var(--white);
+    box-shadow: 0px 2px 3px var(--light-gray);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0px 0px;
+}
+
+.media-badge {
+    inline-size: fit-content;
+    padding: 15px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0.5px solid var(--light-gray);
+    color: var(--navy);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 
 
 /* Text */
