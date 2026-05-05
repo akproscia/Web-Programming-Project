@@ -1,1 +1,10 @@
 main.js
+
+# Node modules
+node_modules/
+
+# data 
+data/
+
+.env
+
