@@ -68,8 +68,7 @@ class App {
         this.submitPost = this.submitPost.bind(this);
         this.refreshPosts = this.refreshPosts.bind(this);
 
-        document.getElementById("add-post").addEventListener('submit', this.submitPost);
-        document.getElementById("refresh-posts").addEventListener("click", this.refreshPosts);
+        this.loadPosts();
     }
 
     async loadPosts() {
