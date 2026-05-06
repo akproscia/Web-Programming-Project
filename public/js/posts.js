@@ -6,6 +6,7 @@ class SocialMediaPost {
         this.postText = postText;
         this.mediaType = mediaType;
         this.user = user.userName;
+        this.appInstance = this.appInstance; 
 
         // create the div as an instance variable, give it the class "post"
         this.div = document.createElement("div");
@@ -55,7 +56,39 @@ class SocialMediaPost {
         p.textContent = postText;
         this.div.appendChild(p);
 
+        // buttons to edit and delete posts ---
+        const controls = document.createElement("div");
+        controls.classList.add("post-controls");
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.onclick = () => this.handleEdit();
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.classList.add("btn-delete");
+        deleteBtn.onclick = () => this.handleDelete();
+
+        controls.appendChild(editBtn);
+        controls.appendChild(deleteBtn);
+        this.div.appendChild(controls);
+
         this.addToDOM(); // add the div to the DOM
+    }
+
+    handleDelete() {
+        if (confirm("Are you sure you want to delete this post?")) {
+            this.appInstance.deletePost(this);
+        }
+    }
+
+    handleEdit() {
+        const newTitle = prompt("Edit Title:", this.postTitle);
+        const newText = prompt("Edit Body:", this.postText);
+
+        if (newTitle && newText) {
+            this.appInstance.editPost(this, newTitle, newText);
+        }
     }
 
     // compare this post with another, for sorting purposes
@@ -189,6 +222,48 @@ class App {
             post.addToDOM();
         }
     }
+
+    createPost(obj) {
+        const post = new SocialMediaPost(this.postContainer, obj.postTitle, obj.postText, obj.mediaType, obj.user, this);
+        this.posts.push(post);
+    }
+
+    /// delete a post
+    async deletePost(postObject) {
+        const response = await fetch('/api/delete-post', {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ postTitle: postObject.postTitle, user: postObject.user })
+        });
+
+        if (response.ok) {
+            postObject.remove();
+            this.posts = this.posts.filter(p => p !== postObject);
+        }
+    }
+    
+    //edit a post 
+    // source https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+    async editPost(postObject, newTitle, newText) {
+        const response = await fetch('/api/edit-post', {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                oldTitle: postObject.postTitle,
+                newTitle: newTitle,
+                newText: newText,
+                user: postObject.user
+            })
+        });
+
+        if (response.ok) {
+            postObject.postTitle = newTitle;
+            postObject.postText = newText;
+            postObject.div.querySelector(".post-title").textContent = newTitle;
+            postObject.div.querySelector(".post-text").textContent = newText;
+        }
+    }
 }
+
 
 export default App;
