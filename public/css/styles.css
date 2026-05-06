@@ -179,9 +179,9 @@ main {
 }
 
 
-/**********
-** Posts **
-**********/
+/********************
+***  Post Layout  ***
+********************/
 
 .post-container {
     margin-top: 10px;
@@ -202,8 +202,17 @@ main {
 .post-header {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 0px 0px;
+    align-items: flex-start; 
+}
+
+.post-title {
+    margin: 0px;
+    color: var(--accent-color);
+}
+
+.post-info {
+    display: flex;
+    gap: 12px;
 }
 
 .media-badge {
