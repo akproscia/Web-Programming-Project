@@ -16,81 +16,111 @@
         </script>
     </head>
     <body>
-        <div class="wrapper">
+        
 
             <header>
                 <div style="display:flex;">
                     <a href=""><img class="navbar-icon" src="images/website-logo.png" /></a>
-                    <h1>Coffeeshop</h1>
+                    <h1>Coffeeshop</h1> 
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="profile.html">My Profile</a></li>
-                        <li><a href="settings.html">Settings</a></li>
-                    </ul>
-                </nav>
+                <div class="nav-and-username-div">
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="profile.html" id="header-username-link"></a></li>
+                            <li><a href="settings.html">Settings</a></li>
+                        </ul>
+                    </nav>
+                    <h3 id="header-username" class="header-username" ></h3>
+                </div>
             </header>
+            <div class="wrapper">
+                <main>
+                    <!-- display posts, other functionality from this page? check proposal -->
+                    <!-- "Add something" button/box on top -->
 
-            <main>
-                <!-- display posts, other functionality from this page? check proposal -->
-                <!-- "Add something" button/box on top -->
+                    <section id="new-post-section">
 
-                <section id="new-post-section">
+                        <div>
+                            <h2>Add a New Post!</h2>
+                        </div>
+
+                        <form id="add-post">
+
+                            <div class="form-element">
+                                <label class="form-label" for="post-title">Title</label>
+                                <input class="form-text" type="text" id="post-title" placeholder="Enter post title..." />
+                            </div>
+
+                            <div class="form-element">
+                                <label class="form-label" for="media-type">Media Type</label>
+                                <select class="form-select" id="media-type">
+                                    <option value="show">Show</option>
+                                    <option value="movie">Movie</option>
+                                    <option value="book">Book</option>
+                                    <option value="game">Game</option>
+                                    <option value="music">Song or Artist</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-element">
+                                <label class="form-label" for="post-body">What did you think?</label>
+                                <!-- Changed to Textarea so user can resize  -->
+                                <textarea class="form-text" id="post-body" placeholder="More about this..." ></textarea>  
+                            </div>
+
+                            <div class="form-element">
+                                <button class="post-button" type="submit" id="submit-post">Post</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <br>
 
                     <div>
-                        <h2>Add a New Post!</h2>
+                        <h2>My Posts</h2>
+                        <div style="display:flex; justify-content:space-between">
+                            <!-- refresh and sort posts button -->
+                            <button class="form-button" id="refresh-posts">Refresh Posts</button>
+                            <div style="display:flex; justify-content:flex-end; align-content: bottom;">
+                                <!-- Filter posts by type-->
+                                <form id="filter-posts-form">
+                                    <label for="filter-posts">Filter </label>
+                                    <select class="form-select" id="filter-posts">
+                                        <option value="all">All</option>
+                                        <option value="show">Shows</option>
+                                        <option value="movie">Movies</option>
+                                        <option value="book">Books</option>
+                                        <option value="game">Game</option>
+                                        <option value="music">Music</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </form>
+                                <!-- Sort posts by date -->
+                                <form id="sort-posts-form">
+                                    <label for="sort-posts">Sort</label>
+                                    <select class="form-select" id="sort-posts">
+                                        <option value="newest">Newest</option>
+                                        <option value="oldest">Oldest</option>
+                                    </select>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                        
+                    
+
+                    <!-- post container div, posts will be displayed in here. this will be referenced in the js file by #post-container -->
+                    <div class="post-container" id="post-container">
+                        <!-- Posts will be dynamically inserted here by JS -->
                     </div>
 
-                    <form id="add-post">
-
-                        <div class="form-element">
-                            <label class="form-label" for="post-title">Title</label>
-                            <input class="form-text" type="text" id="post-title" placeholder="Enter post title..." />
-                        </div>
-
-                        <div class="form-element">
-                            <label class="form-label" for="media-type">Media Type</label>
-                            <select class="form-select" id="media-type">
-                                <option value="show">Show</option>
-                                <option value="movie">Movie</option>
-                                <option value="book">Book</option>
-                                <option value="game">Game</option>
-                                <option value="music">Song or Artist</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-element">
-                            <label class="form-label" for="post-body">What did you think?</label>
-                            <input class="form-text" id="post-body" type="text" placeholder="More about this..." />
-                        </div>
-
-                        <div class="form-element">
-                            <button class="form-button" type="submit" id="submit-post">Post</button>
-                        </div>
-                    </form>
-                </section>
-
-                <br>
-
-                <div>
-                    <h2>My Posts</h2>
-                    <!-- Sort posts button -->
-                    <button class="form-button" id="refresh-posts">Refresh Posts</button>
-                </div>
-                
-
-                <!-- post container div, posts will be displayed in here. this will be referenced in the js file by #post-container -->
-                <div class="post-container" id="post-container">
-                    <!-- Posts will be dynamically inserted here by JS -->
-                </div>
-
-            </main>
-
+                </main>
+            </div>
             <footer>
 
             </footer>
-        </div>
     </body>
 </html>

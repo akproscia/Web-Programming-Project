@@ -23,7 +23,9 @@ body {
     font-size: 1.4 rem;
 }
 
-/* Colors */
+/*******************************
+*** Theme Colors / Variables ***
+*******************************/
 
 :root {
     /* We need to find a color scheme that fits the theme/aesthetic we're going for. 
@@ -62,25 +64,28 @@ body {
 
 }
 
-/* Page Wrapper */
+/*** Page Wrapper ***/
 .wrapper {
     max-width: 1200px;
     max-inline-size: 1200px;
     margin: auto;
+    min-height: 100%;
 }
 
 
-/* Header and Navbar */
+/************************
+*** Header and Navbar ***
+************************/
 
 header {
-    padding: none;
+    padding: 10px 10px;;
     max-inline-size: none;
     display: flex;
     justify-content: space-between;
-    /* background-color: var(--tan); */
     border-bottom: var(--light-gray) 1px solid;
     padding: 5px;
 }
+ 
 nav { flex-direction: column; }
 nav ul { display: flex; list-style: none; justify-content: bottom; }
 nav li { 
@@ -118,7 +123,9 @@ main {
 }
 
 
-/* Profile Page */
+/*********************
+***  Profile Page  ***
+*********************/
 
 /* .profile-page {
     width: 95%;
@@ -187,6 +194,7 @@ main {
 }
 
 
+
 /********************
 ***  Post Layout  ***
 ********************/
@@ -195,18 +203,28 @@ main {
     margin-top: 10px;
     border: var(--light-gray) 1.5px solid;
     background-color: var(--lighter-gray);
-    padding: 0px, 4px;
+    padding: 1px 2px;
 }
 
 .post {
     /* border-top: 2px solid var(--accent-color);
     border-bottom: 2px solid var(--accent-color); */
     
-    padding: 2px 10px;
-    margin-bottom: 5px;
+    padding: 5px 10px;
+    margin-bottom: 8px;
     background-color: var(--white);
     box-shadow: 0px 2px 3px var(--light-gray);
+    border-left: 5px solid var(--light-gray);
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
 }
+
+.post.post--show  { border-left-color: var(--red); }
+.post.post--movie { border-left-color: var(--red); }
+.post.post--book  { border-left-color: var(--orange); }
+.post.post--game  { border-left-color: var(--green); }
+.post.post--music { border-left-color: var(--purple); }
+.post.post--other { border-left-color: var(--blue); }
 
 .post-header {
     display: flex;
@@ -221,8 +239,22 @@ main {
 
 .post-info {
     display: flex;
-    gap: 12px;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    font-style: italic;
 }
+/*
+.post-username {
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    font-style: italic;
+}
+.post-date {
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    font-style: italic;
+} */
 
 .media-badge {
     font-size: 0.8rem;
@@ -237,13 +269,100 @@ main {
 }
 
 .media-badge--show   { background-color: var(--red); } 
-.media-badge--movie  { background-color: var(--orange);  } 
-.media-badge--book   { background-color: var(--yellow); } 
-.media-badge--game   { background-color: var(--blue); } 
+.media-badge--movie  { background-color: var(--red);  } 
+.media-badge--book   { background-color: var(--orange); } 
+.media-badge--game   { background-color: var(--green); } 
 .media-badge--music  { background-color: var(--purple); } 
-.media-badge--other  { background-color: var(--green); }
+.media-badge--other  { background-color: var(--blue); }
 
-/* Text */
+
+/*******************
+***  Login Form  ***
+*******************/
+
+#login-form {
+    max-width: 400px;
+    border: var(--light-gray) 1.5px solid;
+    padding: 10px 15px;
+}
+
+.form-element {
+    width: 300px;
+}
+
+/**********************************
+***  New Post Form and Buttons  ***
+**********************************/
+
+#new-post-section form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+    border: var(--light-gray) 1.5px solid;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(--accent-color)
+}
+
+input, textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.form-element {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#post-title {
+    width: 500px;
+    padding: 8px 10px;
+}
+
+#post-body {
+    width: 700px;
+    min-height: 100px;
+    padding: 8px 10px;
+    resize: vertical; /* Allows user to drag and resize it if needed */
+}
+
+
+
+
+
+
+/******************************
+***  Generic Button Styling ***
+******************************/
+
+button {
+    padding: 0.5em 1em;
+    margin-top: 12px;
+    border: 2px solid var(--second-accent-color);
+    border-radius: 5px;
+    color: var(--second-accent-color);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    
+    box-shadow: 0px 2px 3px var(--accent-color);
+
+}
+button:hover {
+    background-color: var(--accent-color);
+    border: var(--accent-color) 2px solid;
+    color: var(--white);
+}
+
+
+/************************
+***  Text Formatting  ***
+************************/
+
 h1 {
     color: var(--accent-color);
 }

@@ -10,6 +10,7 @@ class SocialMediaPost {
         // create the div as an instance variable, give it the class "post"
         this.div = document.createElement("div");
         this.div.classList.add("post");
+        this.div.classList.add(`post--${mediaType}`); // add the media type as a class for styling purposes (to add a stripe of color on the left later)
 
         // Header: title on the left, media type on right.
         const header = document.createElement("div");
@@ -39,14 +40,16 @@ class SocialMediaPost {
         username.textContent = this.user;
         postInfo.appendChild(username);
 
+        postInfo.appendChild(document.createTextNode("-")); // add a separator between the username and date
+
         const date = document.createElement("span");
         date.classList.add("post-date");
-        date.textContent = new Date().toLocaleDateString();
+        date.textContent = new Date().toDateString();
         postInfo.appendChild(date);
 
         this.div.appendChild(postInfo);
 
-        // --- body text ---
+        // --- final row: body text ---
         const p = document.createElement('p');
         p.classList.add("post-text");
         p.textContent = postText;
@@ -104,11 +107,14 @@ class App {
                 return;
             }
             this.currentUser = await response.json();
+
+            document.getElementById("header-username-link").innerHTML = `<i>${this.currentUser.userName}</i> - My Profile`;
+
             this.loadPosts(); // only loads posts once we know who's logged in
         } catch (error) {
             console.error("Error loading profile", error);
         }
-    } 
+    }
 
     async loadPosts() {
         // fetch the posts from data/posts.json and save them to an array variable in the App object
