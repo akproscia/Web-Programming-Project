@@ -82,6 +82,7 @@ export class App {
         }
     }
 
+    //creates user
     renderUser(user) {
         this.profileDisplayName2.textContent = user.displayName;
         this.profileDisplayUsername2.textContent = `@${user.userName}`;

@@ -6,8 +6,9 @@ We want to create a social media platform focused on sharing and discovering ent
 
 We were inspired by applications like Letterboxd and Airbuds, both of which focus on sharing and viewing your friend’s current interests. While our platform is inspired by those applications, it differs by allowing users to recommend not only just movies or music but also other types of media, all in one place.
 
-## Structure / How To Run
-We created html and/or js files for the login, register, profile, new post, settings, and home page. Open the live server using the login page or the register page. Use "Demo" as the display name and username, "1234" as the password. From there, you should be brought to your profile page.  
+## Structure 
+We created html and/or js files for the login, register, profile, new post, settings, and home page.   
 
-## To Login 5/4
-In your terminal run "npm install", then run "node server.js". In your browser, open "http://localhost:3000/login.html", from there we should be able to register or login using the credentails provided under "data/users.json". For example, we can login in using the username "michelyc" and the password "1234". The code is similar to the example sample login code provided on canvas. 
+## To Login 
+In your terminal run "npm install", then run "node server.js". In your browser, open "http://localhost:3000/login.html", from there we should be able to register or login using the credentials provided under "data/users.json". For example, we can login in using the username "michelyc" and the password "12". The code is similar to the example sample login code provided on canvas. 
+
