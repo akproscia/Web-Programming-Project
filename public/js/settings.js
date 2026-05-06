@@ -6,13 +6,28 @@ export class SettingsApp {
         this.confirmPasswordInput = document.querySelector("#passwordConfirmed");
         this.savefromButton = document.querySelector("#change");
         this.errorMessage = document.querySelector("#error-message");
+        this.deleteButton = document.querySelector("#delete-account"); 
+       
+        this.selectedPfp = null;
+        this.pfpOptions = document.querySelectorAll(".pfp-option");
 
         this.loadCurrentData();
         this.savefromButton.addEventListener("click", () => this.handleSave());
+        this.deleteButton.addEventListener("click", () => this.handleDelete());
        
-        this.deleteButton = document.querySelector("#delete-account"); // Grabs your button
-       this.deleteButton.addEventListener("click", () => this.handleDelete());
-   
+
+        this.pfpOptions.forEach(img => {
+            img.addEventListener("click", (e) => this.selectPfp(e));
+        });
+
+        this.loadCurrentData();
+        this.savefromButton.addEventListener("click", () => this.handleSave())
+    }
+
+    // gets the file name by its id of the selected profilePic
+    selectPfp(event) {
+        const clicked = event.target;
+        this.selectedPfp = clicked.id;
     }
      
     async handleDelete() {
@@ -56,6 +71,7 @@ export class SettingsApp {
         const updatedData = {
             displayName: this.displayNameInput.value,
             userName: this.usernameInput.value,
+            profilePic: this.selectedPfp || undefined,
             password: password || undefined 
         };
 

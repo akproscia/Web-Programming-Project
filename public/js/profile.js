@@ -85,6 +85,11 @@ export class App {
     renderUser(user) {
         this.profileDisplayName2.textContent = user.displayName;
         this.profileDisplayUsername2.textContent = `@${user.userName}`;
+        const pfpElement = document.querySelector(".profile-pic");
+        //makes sure the selected profile pic appears on the profile page
+        if (pfpElement && user.profilePic) {
+        pfpElement.src = `images/${user.profilePic}`;
+        }
     }
     
 

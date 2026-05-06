@@ -94,7 +94,9 @@ app.post('/register', (req, res) => {
 });
 
 /********************
-** Update Username/Name from settings page **
+** Updates Username/Name/ 
+    profilePic/password 
+    from settings page **
 ********************/
 
 app.post('/api/updateUser', (req, res) => {
@@ -102,14 +104,16 @@ app.post('/api/updateUser', (req, res) => {
         return res.status(401).json({ message: "Not logged in" });
     }
 
-    const { displayName, userName, password } = req.body;
+    const { displayName, userName, password, profilePic } = req.body;
     currentUser.displayName = displayName || currentUser.displayName;
     currentUser.userName = userName || currentUser.userName;
-    
+    //checks & updates user.json, if the user updates their password or profile pic
+    if (profilePic) {
+        currentUser.profilePic = profilePic;
+    }
     if (password) {
         currentUser.password = password;
     }
-
     // add changes to users.json
     userManager.saveToFile();
     res.json({ success: true, message: "Settings updated" });
