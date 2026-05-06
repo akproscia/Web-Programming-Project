@@ -11,23 +11,28 @@ class SocialMediaPost {
         this.div = document.createElement("div");
         this.div.classList.add("post");
 
+        const header = document.createElement("div");
+        header.classList.add("post-header");
+
         // create the post title and add it to the div
         const title = document.createElement("h3");
         title.classList.add("post-title");
         title.textContent = postTitle;
-        this.div.appendChild(title);
+        header.appendChild(title);
 
         // create the media badge and add it to the div
         const badge = document.createElement("p");
         badge.classList.add("media-badge");
         badge.textContent = mediaType;
-        this.div.appendChild(badge);
+        header.appendChild(badge);
 
-        // create username element and add it to the div
-        const username = document.createElement("p");
-        username.classList.add("post-username");
-        username.textContent = `Posted by ${this.user}`;
-        this.div.appendChild(username);        
+        // // create username element and add it to the div
+        // const username = document.createElement("p");
+        // username.classList.add("post-username");
+        // username.textContent = `Posted by ${this.user}`;
+        // header.appendChild(username);
+
+        this.div.appendChild(header);
 
         // create the post text paragraph and add it to the div instance variable
         const p = document.createElement('p');
