@@ -11,36 +11,48 @@ class SocialMediaPost {
         this.div = document.createElement("div");
         this.div.classList.add("post");
 
+        // Header: title on the left, media type on right.
         const header = document.createElement("div");
         header.classList.add("post-header");
 
-        // create the post title and add it to the div
+        // --- top row: create the post title and media badge and add them to the div ---
         const title = document.createElement("h3");
         title.classList.add("post-title");
         title.textContent = postTitle;
         header.appendChild(title);
 
-        // create the media badge and add it to the div
         const badge = document.createElement("p");
         badge.classList.add("media-badge");
-        badge.textContent = mediaType;
+        badge.classList.add(`media-badge--${mediaType}`); // add the media type as a class for styling purposes
+        const capitalizedMediaType = mediaType.charAt(0).toUpperCase() + mediaType.slice(1); // capitalize the first letter of the media type for display purposes
+        badge.textContent = capitalizedMediaType;
         header.appendChild(badge);
-
-        // // create username element and add it to the div
-        // const username = document.createElement("p");
-        // username.classList.add("post-username");
-        // username.textContent = `Posted by ${this.user}`;
-        // header.appendChild(username);
 
         this.div.appendChild(header);
 
-        // create the post text paragraph and add it to the div instance variable
+        // --- second row: create username and date elements and add them to the div ---
+        const postInfo = document.createElement("div");
+        postInfo.classList.add("post-info");
+
+        const username = document.createElement("span");
+        username.classList.add("post-username");
+        username.textContent = this.user;
+        postInfo.appendChild(username);
+
+        const date = document.createElement("span");
+        date.classList.add("post-date");
+        date.textContent = new Date().toLocaleDateString();
+        postInfo.appendChild(date);
+
+        this.div.appendChild(postInfo);
+
+        // --- body text ---
         const p = document.createElement('p');
+        p.classList.add("post-text");
         p.textContent = postText;
         this.div.appendChild(p);
 
-        // add the div to the DOM
-        this.addToDOM();
+        this.addToDOM(); // add the div to the DOM
     }
 
     // compare this post with another, for sorting purposes
@@ -48,7 +60,7 @@ class SocialMediaPost {
         // returns -1 if this.text lexicographically (alphanumerically) comes before otherPost.text
         // returns  1 if this.text lexicographically (alphanumerically) comes after otherPost.text
         // returns  0 if this.text === otherPost.text
-        return this.text.localeCompare(otherPost.text);
+        return this.postTitle.localeCompare(otherPost.postTitle);
     }
 
     // removes the div from the DOM
@@ -73,20 +85,41 @@ class App {
         this.textInput = document.getElementById("post-body");
         // set up an array variable that will hold the posts 
         this.posts = [];
+        this.currentUser = null;
 
         this.submitPost = this.submitPost.bind(this);
         this.refreshPosts = this.refreshPosts.bind(this);
 
-        this.loadPosts();
+        this.loadCurrentUser();
     }
+
+    async loadCurrentUser() {
+        // fetch the current user from the server to load correct posts and save posts to correct user
+        // also redirects to login if user is not logged in
+        try {
+            // sends req for data on the current user
+            const response = await fetch('/api/currentUser');
+            if (!response.ok) {
+                window.location.href = 'login.html'; 
+                return;
+            }
+            this.currentUser = await response.json();
+            this.loadPosts(); // only loads posts once we know who's logged in
+        } catch (error) {
+            console.error("Error loading profile", error);
+        }
+    } 
 
     async loadPosts() {
         // fetch the posts from data/posts.json and save them to an array variable in the App object
         const response = await fetch("/data");
         const data = await response.json();
         
+        // Filter through posts to only show posts from the current user
+        const myPosts = data.filter(obj => obj.user.userName === this.currentUser.userName);
+
         // create a new post for each object in the data array
-        for (const obj of data) {
+        for (const obj of myPosts) {
             this.createPost(obj);
         }
 
@@ -112,7 +145,7 @@ class App {
             postTitle: document.getElementById("post-title").value,
             postText: document.getElementById("post-body").value,
             mediaType: document.getElementById("media-type").value,
-            user: { userName: document.getElementById("user-name").value } // add pfp later?
+            user: { userName: this.currentUser.userName } // add pfp later?
         }
 
 
@@ -130,7 +163,6 @@ class App {
         document.getElementById("post-title").value = "";
         document.getElementById("post-body").value = "";
         document.getElementById("media-type").value = "";
-        document.getElementById("user-name").value = "";
     }
 
     refreshPosts() {
