@@ -24,7 +24,8 @@ class SocialMediaPost {
         const badge = document.createElement("p");
         badge.classList.add("media-badge");
         badge.classList.add(`media-badge--${mediaType}`); // add the media type as a class for styling purposes
-        badge.textContent = mediaType;
+        const capitalizedMediaType = mediaType.charAt(0).toUpperCase() + mediaType.slice(1); // capitalize the first letter of the media type for display purposes
+        badge.textContent = capitalizedMediaType;
         header.appendChild(badge);
 
         this.div.appendChild(header);
