@@ -147,10 +147,21 @@ class App {
     submitPost(event) {
         event.preventDefault(); // prevent the form from refreshing the page
 
+        const postTitle = document.getElementById("post-title").value;
+        const postText = document.getElementById("post-body").value;
+        const mediaType = document.getElementById("media-type").value;
+
+        if (!postTitle || !postText || !mediaType) {
+            alert("Please fill in all fields before submitting a post.");
+            return;
+        }
+        // prevents you from submitting an empty post.
+        
+
         const obj = {
-            postTitle: document.getElementById("post-title").value,
-            postText: document.getElementById("post-body").value,
-            mediaType: document.getElementById("media-type").value,
+            postTitle: postTitle,
+            postText: postText,
+            mediaType: mediaType,
             user: { userName: this.currentUser.userName } // add pfp later?
         }
 
