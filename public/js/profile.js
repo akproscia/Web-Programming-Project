@@ -52,7 +52,7 @@ class User {
     
 }
 
-class App {
+export class App {
     // read inputs and create an account
     constructor() {
         // set up references
@@ -124,6 +124,3 @@ class App {
     }
 }
 
-export default function setup(){
-    new App(); 
-}

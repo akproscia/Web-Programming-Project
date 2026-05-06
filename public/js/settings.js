@@ -1,4 +1,4 @@
-class SettingsApp {
+export class SettingsApp {
     constructor() {
         this.displayNameInput = document.querySelector("#displayName");
         this.usernameInput = document.querySelector("#username");
@@ -70,8 +70,4 @@ class SettingsApp {
             window.location.href = 'profile.html';
         }
     }
-}
-
-export default function setup() {
-    new SettingsApp();
 }
