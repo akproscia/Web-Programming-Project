@@ -1,21 +1,23 @@
 class App {
     constructor(){
+        //input + button + error display
         this.usernameInput = document.querySelector('#username');
         this.passwordInput = document.querySelector('#password');
         this.errorDiv = document.querySelector('#error-message');
 
         this.login = this.login.bind(this);
-
         document.querySelector('#login').addEventListener('click', this.login);
     }
 
     async login(event){
         if(event) event.preventDefault();
-
+        
+        //gets data input + sends it to the server
         const credentials = {
             username: this.usernameInput.value,
             password: this.passwordInput.value
         }
+
 
         const response = await fetch('/login', {
             method: "POST",
@@ -23,6 +25,7 @@ class App {
             body: JSON.stringify(credentials)
         });
 
+        // if it is a valid input, go to the users profile page
         const auth = await response.json();
 
         if (auth.success){
@@ -31,7 +34,8 @@ class App {
             this.showError(auth.message); 
         }
     }
-
+     
+    //if it is not valid, display an error
     showError(message){
         this.errorDiv.textContent = message;
         this.errorDiv.classList.remove('hidden');
