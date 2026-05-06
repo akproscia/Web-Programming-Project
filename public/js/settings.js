@@ -22,7 +22,16 @@ export class SettingsApp {
 
         this.loadCurrentData();
         this.savefromButton.addEventListener("click", () => this.handleSave())
+
+        //logout button using server.js redirects to login page
+        document.querySelector("#logout").addEventListener("click", () => {
+        fetch('/api/logout', { method: 'POST' }).then(() => {
+        window.location.href = 'login.html';
+                  });
+              });
     }
+
+
 
     // gets the file name by its id of the selected profilePic
     selectPfp(event) {

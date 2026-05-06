@@ -144,6 +144,14 @@ app.delete('/api/deleteAccount', (req, res) => {
 
 
 /********************
+** Logout **
+********************/
+app.post('/api/logout', (req, res) => {
+    currentUser = null;
+    res.json({ success: true });
+});
+
+/********************
 ** Post Management **
 ********************/
 
