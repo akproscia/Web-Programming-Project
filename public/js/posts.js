@@ -110,7 +110,7 @@ class SocialMediaPost {
     }
 }
 
-class App {
+class PostsApp {
     constructor() {
         // App should handle references to the post container, text input, other passed values, etc.
         // It should also havr all methods that deal with creating and editing posts. everything will be done through this class. 
@@ -288,4 +288,4 @@ class App {
 }
 
 
-export default App;
+export default PostsApp;

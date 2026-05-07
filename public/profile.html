@@ -12,9 +12,12 @@
         <!-- import functions from JS files here -->
          
         <script type="module">
-             import {App }from "./js/profile.js";
+            import { App }from "./js/profile.js";
+            import PostsApp from "./js/posts.js";
 
-             new App();
+            new App();
+            new PostsApp();
+            
       </script>
     </head>
     <body>
@@ -46,45 +49,46 @@
                         <h3 id = "profileDisplayUsername">username</h3>
                     </div>
                 </div>
-                <!-- Most recent post -->
+                <!-- Most recent post 
                 <div class="profile-box">
                     <h3>Recommendation</h3>
                     <div class="box-body">
                         <p>[Put a post in here]</p>
                     </div>
                 </div>
-
+            -->
                 
-                <div style="display:flex; justify-content:safe;"> 
-                    <!-- connect section -->
-                    <div>
-                        <div class="profile-box">
-                            <h3>Connect</h3>
-                            <div class="box-body connect-list">
-                                <p><img src="./images/spotify-logo.png" alt="Spotify Logo" class="icon"> <a href="https://open.spotify.com/user/p67if9fyyrtwwjbopqhm9pul7?si=6f12bb6be17a4811">Spotify</a></p>
-                                <p><img src="./images/letterboxd-logo.png" alt="Letterboxd Logo" class="icon"> <a href="https://open.spotify.com/user/p67if9fyyrtwwjbopqhm9pul7?si=6f12bb6be17a4811">Letterboxd</a></p>
-                                <p><img src="./images/blank-pfp.png" alt="Goodreads Logo" class="icon"> <a href="https://open.spotify.com/user/p67if9fyyrtwwjbopqhm9pul7?si=6f12bb6be17a4811">GoodReads</a></p>
-                                <p><img src="./images/instagram-logo.png" alt="instagram logo" class="icon"><a href="https://www.instagram.com/">Instagram</a> </p>
-                            </div>
+                <!-- post container div, posts will be displayed in here. this will be referenced in the js file by #post-container -->
+                <div class="post-container" id="post-container">
+                    <div class="post-controls">
+                        <!-- Search aligned left -->
+                        <input type="text" id="search-posts" class="post-search" placeholder="Search posts..." />
+     
+                        <div class="post-controls-right">
+                            <!-- Filter + Sort--grouped together -->
+                            <form id="filter-posts-form">
+                                <select class="styled-select" id="filter-posts">
+                                    <option value="all">Filter: All</option>
+                                    <option value="show">Filter: Shows</option>
+                                    <option value="movie">Filter: Movies</option>
+                                    <option value="book">Filter: Books</option>
+                                    <option value="game">Filter: Game</option>
+                                    <option value="music">Filter: Music</option>
+                                    <option value="other">Filter: Other</option>
+                                </select>
+                            </form>
+                            <form id="sort-posts-form">
+                                <select class="styled-select" id="sort-posts">
+                                    <option value="newest">Sort: Newest</option>
+                                    <option value="oldest">Sort: Oldest</option>
+                                    <option value="alpha">Sort: A-Z</option>
+                                </select>
+                            </form>
                         </div>
-                    </div>
-                    <!-- Friends -->
-                    <div class="profile-box">
-                        <h3>Friends</h3>
-                        <div class="box-body friends-list">
-                            <ul class="friends-list">
-                                <li>Michely</li>
-                                <li>Jane</li>
-                                <li>Joe</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="profile-box">
-                    <h3>generic section</h3>
-                    <div class="box-body">
-                        <p>box text here</p>
+                        
+                    </div> 
+                    <div id="posts-list">
+                        <!-- Posts will be dynamically inserted here by JS -->
                     </div>
                 </div>
 
