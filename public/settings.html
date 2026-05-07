@@ -16,22 +16,23 @@
      </script>
     </head>
     <body>
-        <div class="wrapper">
-
-            <header>
-                <div style="display:flex;">
-                    <a href=""><img class="navbar-icon" src="images/website-logo.png" /></a>
-                    <h1>Coffeeshop</h1>
-                </div>
+        <header>
+            <div style="display:flex;">
+                <a href=""><img class="navbar-icon" src="images/website-logo.png" /></a>
+                <h1>Coffeeshop</h1> 
+            </div>
+            <div class="nav-and-username-div">
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="profile.html">My Profile</a></li>
+                        <li><a href="profile.html" id="header-username-link"></a></li>
                         <li><a href="settings.html">Settings</a></li>
                     </ul>
                 </nav>
-            </header>
-            
+                <h3 id="header-username" class="header-username" ></h3>
+            </div>
+        </header>
+        <div class="wrapper">
             <main>
                 <div>
                     <h2>Settings</h2>
