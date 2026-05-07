@@ -242,7 +242,8 @@ class App {
         }
     }
     
-    //edit a post 
+    //edit a post & delete posts
+    // Source below was used for fetch methods.
     // source https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     async editPost(postObject, newTitle, newText) {
         const response = await fetch('/api/edit-post', {

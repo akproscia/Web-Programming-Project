@@ -21,4 +21,12 @@ Register.js creates an instance of the App class. Constructor() sets up the html
 Settings.js lets the user logout, delete their account, change their profile pic, username, displayname, and password. The code begins with "<script type="module"> import {SettingsApp} from "./js/settings.js"; new SettingsApp(); " in settings.html. 
 
 Constructor() maps out the references and buttons, then calls loadCurrentData(), which auto fills the users current display name and username in the textboxs from the server. It also initializes multiple event listners to handle saving the changes. Selectpfp() gets the id of the picture the user clicks and saves it to the users json object so that the change is saved/visible. HandleDelete() triggers confirmation from the user on if they want to delete their account, if confirmed it sends a DELETE request to the server, removes it from the user.json file, and redirects to the login page. The Logout button redirects the user to the login page if clicked. 
-  
+
+----Posts.js----
+The code starts and is initialized with "<script type="module"> import App from "./js/posts.js"; const app = new App(); in the index.html. Posts.js lets users make, edit, and delete posts. 
+
+The constructor in starts with initializing and mapping html elements, like the post container. It then calls loadCurrentUser() to check if a user is logged in. If a user is logged in it triggers loadPosts(), which gets any existing data in the server. Then it triggers createPost() to fill in the SocialMediaPost objects. 
+
+When the post button is clicked, it triggers submitPost(), which sends the new data to the server in a POST request. When the refresh button is clicked, it triggers refreshPosts(), which re orders the posts in the right order. The edit/delete buttons use handleEdit() and handleDelete() to call editPost(), PUT/DELETE to edit and delete posts. 
+
+------------------------------------
