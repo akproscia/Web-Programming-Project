@@ -190,7 +190,7 @@ main {
 
 
 .hidden {
-    display : none;
+    display: none;
 }
 
 
@@ -331,6 +331,46 @@ input, textarea {
 
 
 
+/*********************************
+***  Post Filters and Sorting  ***
+*********************************/
+
+.post-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background-color: var(--white);
+    border-bottom: var(--light-gray) 1.5px solid;
+    gap: 10px;
+}
+
+.post-search {
+    padding: 6px 10px;
+    border: var(--light-gray) 1px solid;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    width: 300px;
+}
+
+.post-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Style Dropdowns */
+.styled-select {
+    padding: 6px 10px;
+    border: var(--light-gray) 1px solid;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    background-color: var(--white);
+    color: var(--accent-color);
+    cursor: pointer;
+}
 
 
 

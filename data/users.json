@@ -4,7 +4,7 @@
         "userName": "annap",
         "email": "anna@email.com",
         "password": "1234",
-        "profilePic": "blank-pfp.png",
+        "profilePic": "pink-pfp.png",
         "interests": [
             "stardew valley",
             "naruto"
@@ -16,6 +16,16 @@
         "email": "michely@email.com",
         "password": "12",
         "profilePic": "blue-pfp.png",
+        "interests": [
+            "",
+            ""
+        ]
+    },
+    {
+        "displayName": "test",
+        "userName": "test1",
+        "email": "",
+        "password": "t1",
         "interests": [
             "",
             ""

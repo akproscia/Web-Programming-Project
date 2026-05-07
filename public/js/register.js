@@ -34,7 +34,7 @@ class App {
         const result = await response.json();
 
         if (result.success){
-            alert("Registration successful!");
+            alert("Registration successful! Please log in.");
             window.location.href = 'login.html';
         } else {
             this.showError(result.message);

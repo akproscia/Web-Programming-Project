@@ -1,12 +1,12 @@
 class SocialMediaPost {
-    constructor(parentElement, postTitle, postText, mediaType, user) {
+    constructor(parentElement, postTitle, postText, mediaType, user, appInstance) {
         // save the parentElement, postTitle, postText, and userName to the object
         this.parentElement = parentElement;
         this.postTitle = postTitle;
         this.postText = postText;
         this.mediaType = mediaType;
         this.user = user.userName;
-        this.appInstance = this.appInstance; 
+        this.appInstance = appInstance; 
 
         // create the div as an instance variable, give it the class "post"
         this.div = document.createElement("div");
@@ -116,7 +116,7 @@ class App {
         // It should also havr all methods that deal with creating and editing posts. everything will be done through this class. 
 
         // set up a reference to the post container in the html
-        this.postContainer = document.getElementById("post-container");
+        this.postContainer = document.getElementById("posts-list");
         // set up a reference to the text input
         this.textInput = document.getElementById("post-body");
         // set up an array variable that will hold the posts 
@@ -153,13 +153,10 @@ class App {
         // fetch the posts from data/posts.json and save them to an array variable in the App object
         const response = await fetch("/data");
         const data = await response.json();
-        
         // Filter through posts to only show posts from the current user
-        const myPosts = data.filter(obj => obj.user.userName === this.currentUser.userName);
-
-        // create a new post for each object in the data array
-        for (const obj of myPosts) {
-            this.createPost(obj);
+        const myPosts = data.filter(obj => obj.user.userName.toLowerCase() === this.currentUser.userName.toLowerCase());
+        for (const obj of myPosts) { 
+            this.createPost(obj); 
         }
 
         // enable the post form and give it a submit listener        
@@ -169,14 +166,46 @@ class App {
         // enable the sort button and give it a click listener
         this.refreshButton = document.getElementById("refresh-posts"); 
         this.refreshButton.addEventListener("click", this.refreshPosts);
+
+        // all call new method applyPostControls
+        document.getElementById("search-posts").addEventListener("input", () => this.applyPostControls()); 
+        document.getElementById("filter-posts").addEventListener("change", () => this.applyPostControls());
+        document.getElementById("sort-posts").addEventListener("change", () => this.applyPostControls());
     }
 
-    createPost(obj) {
-        // obj should have postTitle, postText, mediaType, and user
-        const post = new SocialMediaPost(this.postContainer, obj.postTitle, obj.postText, obj.mediaType, obj.user);
-        this.posts.push(post);
+    applyPostControls() {
+        const searchTerm = document.getElementById("search-posts").value.toLowerCase(); // get search term, convert to lowercase for case-sensitivity
+        const filterValue = document.getElementById("filter-posts").value; // get filter value from dropdown
+        const sortValue = document.getElementById("sort-posts").value; // get sort value from dropdown
+
+        let visiblePosts = this.posts.filter(post => {
+            const matchesFilter = filterValue === "all" || post.mediaType === filterValue; // check if post matches filter
+            const matchesSearch = post.postTitle.toLowerCase().includes(searchTerm) || post.postText.toLowerCase().includes(searchTerm); // filter posts based on search term
+            return matchesFilter && matchesSearch; // return true if post matches both filter and search criteria
+        });
+
+        if (sortValue === "oldest") {
+            visiblePosts.sort((a, b) => new Date(a.div.querySelector(".post-date").textContent) - new Date(b.div.querySelector(".post-date").textContent)); // sort posts by date, oldest to newest
+        } else if (sortValue === "newest") {
+            visiblePosts.sort((a, b) => new Date(b.div.querySelector(".post-date").textContent) - new Date(a.div.querySelector(".post-date").textContent)); // sort posts by date, newest to oldest
+        } else if (sortValue === "a-z") {
+            visiblePosts.sort((a, b) => a.postTitle.localeCompare(b.postTitle)); // sort posts alphabetically
+        }
+
+        this.renderPosts(visiblePosts); 
     }
-    
+
+    renderPosts(visiblePosts) {
+        // remove all of the posts from the DOM and then add them back in the order they are in the this.posts array
+        // changed from refreshPosts to renderPosts because it is now being used for filtering and sorting as well as refreshing
+        this.posts.forEach(post => post.remove());
+        visiblePosts.forEach(post => post.addToDOM());
+    }
+
+    refreshPosts() {
+        this.renderPosts(this.posts); // re-render posts in the order they are in the this.posts array (which is the order they were loaded from the server, oldest to newest)
+    }
+
     submitPost(event) {
         event.preventDefault(); // prevent the form from refreshing the page
 
@@ -213,14 +242,6 @@ class App {
         document.getElementById("post-title").value = "";
         document.getElementById("post-body").value = "";
         document.getElementById("media-type").value = "";
-    }
-
-    refreshPosts() {
-        // remove all of the posts from the DOM and then add them back in the order they are in the this.posts array
-        for (const post of this.posts) {
-            post.remove();
-            post.addToDOM();
-        }
     }
 
     createPost(obj) {

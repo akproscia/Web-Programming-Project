@@ -81,41 +81,47 @@
                     <div style="display:flex; justify-content:space-between">
                         <!-- refresh and sort posts button -->
                         <button class="form-button" id="refresh-posts">Refresh Posts</button>
-                        <div style="display:flex; justify-content:flex-end; align-content: bottom;">
-                            <!-- Filter posts by type-->
-                            <form id="filter-posts-form">
-                                <label for="filter-posts">Filter </label>
-                                <select class="form-select" id="filter-posts">
-                                    <option value="all">All</option>
-                                    <option value="show">Shows</option>
-                                    <option value="movie">Movies</option>
-                                    <option value="book">Books</option>
-                                    <option value="game">Game</option>
-                                    <option value="music">Music</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </form>
-                            <!-- Sort posts by date -->
-                            <form id="sort-posts-form">
-                                <label for="sort-posts">Sort</label>
-                                <select class="form-select" id="sort-posts">
-                                    <option value="newest">Newest</option>
-                                    <option value="oldest">Oldest</option>
-                                </select>
-                            </form>
-                        </div> 
+                        
                     </div>
                 </div>
 
                 <!-- post container div, posts will be displayed in here. this will be referenced in the js file by #post-container -->
                 <div class="post-container" id="post-container">
-                    <!-- Posts will be dynamically inserted here by JS -->
+                    <div class="post-controls">
+                        <!-- Search aligned left -->
+                        <input type="text" id="search-posts" class="post-search" placeholder="Search posts..." />
+     
+                        <div class="post-controls-right">
+                            <!-- Filter + Sort--grouped together -->
+                            <form id="filter-posts-form">
+                                <select class="styled-select" id="filter-posts">
+                                    <option value="all">Filter: All</option>
+                                    <option value="show">Filter: Shows</option>
+                                    <option value="movie">Filter: Movies</option>
+                                    <option value="book">Filter: Books</option>
+                                    <option value="game">Filter: Game</option>
+                                    <option value="music">Filter: Music</option>
+                                    <option value="other">Filter: Other</option>
+                                </select>
+                            </form>
+                            <form id="sort-posts-form">
+                                <select class="styled-select" id="sort-posts">
+                                    <option value="newest">Sort: Newest</option>
+                                    <option value="oldest">Sort: Oldest</option>
+                                    <option value="alpha">Sort: A-Z</option>
+                                </select>
+                            </form>
+                        </div>
+                        
+                    </div> 
+                    <div id="posts-list">
+                        <!-- Posts will be dynamically inserted here by JS -->
+                    </div>
                 </div>
-
             </main>
         </div>
-        <footer>
 
+        <footer>
         </footer>
     </body>
 </html>
